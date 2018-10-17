@@ -1,32 +1,153 @@
-.App {
+.selector {
+  margin-bottom: 5px;
+  margin-top: 1px;
+  margin-bottom: 15px;
+}
+
+.secondrowbuttons {
+  margin-top: 5px;
+}
+
+.addordeletebuttons{
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  padding-left: 500px;
+}
+
+.propsSidebar{
+width: 200px
+}
+
+.result{
+  height: 150px;
+  width:1100px;
+  overflow-y: scroll;
+}
+
+.stringify{
+  width:1100px;
+  height:150px;
+  overflow-y: scroll;
+  margin-bottom: 1px;
+  margin-top:0px;
+  position: fixed;
+  bottom:0;
+  border: 1px solid #ccc9c9;
+}
+
+.sidebar{
+  padding-top: 1px;
+}
+
+.col-sm-2 {
+width:150px;
+height: 700px;
+border-right: 1px solid #ccc9c9;
+padding-top: 20px
+}
+
+.navbar {
+margin-bottom: 0px;
+
+}
+
+.list-group  {
+  width:700px;
+  height:500px;
+}
+
+.Input {
+  margin-top:30px;
+}
+
+
+.changeBorder {
+  border: 1px solid #fff;
+}
+
+.App{
+  position: relative;
+}
+
+.col-sm-3 {
+  height:700px;
+  width: 265px;
+  margin-right: 1px;
+  margin-top: 53px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #ccc9c9;
+}
+
+.container {
+  width:250px;
+}
+
+.generalPropertiesTitle {
+  text-align:center;
+  font-size: 18px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.generalproperties {
+  width: 80px;
+  margin-left:50px
+
+}
+
+.firstgenprop {
+margin-top:15px;
+text-align:center;
+}
+
+.specificPropertiesTitle {
+  text-align:center;
+  font-size: 18px;
+  height: 30px;
+  margin-top: 170px;
+  margin-bottom: 10px;
+}
+
+.specificproperties {
+  width: 80px;
+  margin-left:50px
+}
+
+.col-sm-7 {
+  margin-bottom: 1px;
+
+}
+
+.mainComponent {
+  margin-bottom: 1px;
+}
+
+.top {
+  margin-top: 0px
+}
+
+.tabloul {
   text-align: center;
+  width: 1110px;
+  height:350px;
+  border: 1px solid #ccc9c9;
+  margin-left: 155px
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.genpropstext{
+  margin-top:5px;
+  padding-right:5px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.specpropstext{
+  margin-top:5px;
+  padding-right:5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#Points:hover, #Circles:hover, #Rectangles:hover, #Lines:hover  {
+    cursor: pointer;
 }
