@@ -5,6 +5,7 @@
         "linebreak-style": 0,
         "space-infix-ops": 2,
         "react/prop-types": 0,
-        "max-len":0
+        "max-len":0,
+        "no-restricted-properties": 0
     }
 }

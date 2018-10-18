@@ -68,7 +68,7 @@ class Drawer extends Component {
         coordObj = this.getPosition(e);
         elem.x = firstClick.xCoord;
         elem.y = firstClick.yCoord;
-        elem.r = Math.sqrt((coordObj.x - firstClick.xCoord) ** 2) + ((coordObj.y - firstClick.yCoord) ** 2);
+        elem.r = Math.sqrt(Math.pow((coordObj.x - firstClick.xCoord), 2) + (Math.pow((coordObj.y - firstClick.yCoord), 2)));
         updateElements(elem);
         const reset = Object.assign({}, firstClick);
         reset.xCoord = null;
@@ -140,7 +140,75 @@ class Drawer extends Component {
   }
 
 
+  drawGeometry(element) {
+    const { setSelectedId } = this.props;
+    switch (element.name) {
+      case 'Circles':
+        return (
+          <circle
+            id={element.name}
+            onClick={() => setSelectedId(element)}
+            key={element.id}
+            cx={element.x}
+            cy={element.y}
+            r={element.r}
+            stroke={element.color}
+            strokeWidth={element.lineWidth}
+            fill="yellow"
+          />
+        );
+      case 'Rectangles':
+        return (
+          <rect
+            id={element.name}
+            onClick={() => setSelectedId(element)}
+            key={element.id}
+            x={element.x}
+            y={element.y}
+            width={element.width}
+            height={element.height}
+            stroke={element.color}
+            strokeWidth={element.lineWidth}
+            fill="red"
+          />
+        );
+      case 'Lines':
+        return (
+          <line
+            id={element.name}
+            onClick={() => setSelectedId(element)}
+            key={element.id}
+            x1={element.x1}
+            y1={element.y1}
+            x2={element.x2}
+            y2={element.y2}
+            stroke={element.color}
+            strokeWidth={element.lineWidth}
+          />
+        );
+      case 'Points':
+      {
+        return (
+          <path
+            d={`M ${element.x} ${element.y} L ${element.x} ${element.y} Z`}
+            stroke="black"
+            onClick={() => setSelectedId(element)}
+            id={element.name}
+            key={element.id}
+            strokeLinecap="round"
+            strokeWidth="4"
+          />
+        );
+      }
+      default:
+        return null;
+    }
+  }
+
   render() {
+    const {
+      firstClick, currentDrawing,
+    } = this.state;
     const {
       elements,
     } = this.props;
@@ -152,88 +220,15 @@ class Drawer extends Component {
           style={{ background: '#FAF9F9' }}
           onClick={event => this.createElements(event)}
           onMouseMove={event => this.getPosition(event)}
-          >
+        >
           <g>{elements.map(element => this.drawGeometry(element))}</g>
-          <g
-
-          >
-            {this.state.firstClick !== null ? this.drawGeometry(this.state.currentDrawing) : null }
+          <g>
+            {firstClick !== null ? this.drawGeometry(currentDrawing) : null }
           </g>
         </svg>
       </div>
     );
   }
-
-  drawGeometry(element) {
-
-    switch (element.name) {
-      case 'Circles':
-        return (
-          <circle
-            id={element.name}
-            onClick={() => this.props.setSelectedId(element)}
-            key={element.id}
-            cx={element.x}
-            cy={element.y}
-            r={element.r}
-            stroke={element.color}
-            strokeWidth={element.lineWidth}
-            fill="yellow"
-              />
-        );
-        break;
-      case 'Rectangles':
-        return (
-          <rect
-            id={element.name}
-            onClick={() => this.props.setSelectedId(element)}
-            key={element.id}
-            x={element.x}
-            y={element.y}
-            width={element.width}
-            height={element.height}
-            stroke={element.color}
-            strokeWidth={element.lineWidth}
-            fill="red"
-              />
-        );
-        break;
-      case 'Lines':
-        return (
-          <line
-            id={element.name}
-            onClick={() => this.props.setSelectedId(element)}
-            key={element.id}
-            x1={element.x1}
-            y1={element.y1}
-            x2={element.x2}
-            y2={element.y2}
-            stroke={element.color}
-            strokeWidth={element.lineWidth}
-              />
-        );
-        break;
-      case 'Points':
-      {
-        return (
-          <path
-            d={`M ${element.x } ${element.y } L ${element.x} ${ element.y} Z`}
-            stroke="black"
-            onClick={() => this.props.setSelectedId(element)}
-            id={element.name}
-            key={element.id}
-            strokeLinecap="round"
-            strokeWidth="4"
-              />
-        );
-      }
-      default:
-        return null;
-        break;
-    }
-
-  }
-
 }
 
 export default Drawer;
